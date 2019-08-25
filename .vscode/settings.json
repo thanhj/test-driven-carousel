@@ -6,7 +6,8 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "node_modules": true,
-    "package-lock.json": true
+    "package-lock.json": true,
+    "dist": true
   },
   "eslint.run": "onSave",
   "prettier.eslintIntegration": true,
