@@ -12,6 +12,7 @@ const getAttribution = ({ name, username }) => (
   </>
 );
 
+// Improve: Use unsplash API to auto generate list of imgUrl
 export default [
   {
     description: 'Seattle',
