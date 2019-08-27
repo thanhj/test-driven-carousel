@@ -1,3 +1,7 @@
+# Test Driven Carousel
+
+[![Build Status](https://travis-ci.org/thanhj/test-driven-carousel.svg?branch=master)](https://travis-ci.org/thanhj/test-driven-carousel)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
