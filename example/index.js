@@ -7,4 +7,8 @@ import slides from './slides';
 
 const container = document.createElement('div');
 document.body.appendChild(container);
-ReactDOM.render(<Carousel slides={slides} />, container);
+const autoAdvanceDelay = 5e3;
+ReactDOM.render(
+  <Carousel slides={slides} autoAdvanceDelay={autoAdvanceDelay} />,
+  container
+);

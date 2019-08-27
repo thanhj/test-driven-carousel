@@ -26,25 +26,36 @@ describe('Carousel', () => {
   describe('component with HOC', () => {
     // Tests against Carousel wil go here
 
-    let wrapper;
+    let mounted;
 
     beforeEach(() => {
-      wrapper = shallow(<Carousel slides={slides} />);
+      mounted = mount(<Carousel slides={slides} />);
     });
 
     it('allows `slideIndex` to be controlled', () => {
-      const mounted = mount(<Carousel slides={slides} slideIndex={1} />);
+      mounted = mount(<Carousel slides={slides} slideIndex={1} />);
       expect(mounted.find(CoreCarousel).prop('slideIndex')).toBe(1);
       mounted.setProps({ slideIndex: 0 });
       expect(mounted.find(CoreCarousel).prop('slideIndex')).toBe(0);
     });
 
     it('sets slideIndex={0} on the core component', () => {
-      expect(wrapper.find(CoreCarousel).prop('slideIndex')).toBe(0);
+      expect(mounted.find(CoreCarousel).prop('slideIndex')).toBe(0);
     });
 
     it('passes `slides` down to the core component', () => {
-      expect(wrapper.find(CoreCarousel).prop('slides')).toBe(slides);
+      expect(mounted.find(CoreCarousel).prop('slides')).toBe(slides);
+    });
+
+    it('advances the slide after `autoAdvanceDelay` elapses', () => {
+      jest.useFakeTimers();
+      const autoAdvanceDelay = 10e3;
+      mounted = mount(
+        <Carousel slides={slides} autoAdvanceDelay={autoAdvanceDelay} />
+      );
+      jest.advanceTimersByTime(autoAdvanceDelay);
+      mounted.update();
+      expect(mounted.find(CoreCarousel).prop('slideIndex')).toBe(1);
     });
   });
 
